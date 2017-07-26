@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 var profile = {
     name: "Lauren Mikel Welborn",
     github_link: "https://github.com/luluwelborn",
+    github_profile_image: "https://avatars3.githubusercontent.com/u/28907160?v=4&u=cc4fd37ae8ee1cf4140c62c7cc4209b3c072b0ec&s=400",
     current_city: "Denver",
-    is_employed: false,
     pets: [ 
       { name: 'Bane', personality: 'soldier' }, 
       { name: 'Bronson', personality: 'artist' }
@@ -51,7 +51,7 @@ app.get('/', function homepage(req, res) {
 /*
  * JSON API Endpoints
  */
-
+// ------ ENDPOINT INDEX ------ 
 app.get('/api', function api_index(req, res) {
   // Documented api endpoints below
   res.json({
@@ -62,10 +62,21 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "My basic profile info"},
-      {method: "POST", path: "/api/games", description: "pinball games/machines I like"}
+      {method: "POST", path: "/api/games", description: "pinball games I like"}
     ]
   })
 });
+
+// ------ ENDPOINT PROFILE ------
+// app.get('/api/profile', function index(req, res) {
+//  res.json({profile});
+// });
+
+// ------ ENDPOINT GAMES ------
+// app.post('/api/games', function(){
+//   ???
+// });
+
 
 /**********
  * SERVER *
