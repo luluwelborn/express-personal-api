@@ -20,10 +20,26 @@ var profile = {
     github_profile_image: "https://avatars3.githubusercontent.com/u/28907160?v=4&u=cc4fd37ae8ee1cf4140c62c7cc4209b3c072b0ec&s=400",
     current_city: "Denver",
     pets: [ 
-      { name: 'Bane', personality: 'soldier' }, 
-      { name: 'Bronson', personality: 'artist' }
+      { name: 'Bane', personality: 'soldier', breed: 'chupacabra' }, 
+      { name: 'Bronson', personality: 'artist', breed: 'chupacabra' }
     ]
 };
+
+// ------ MY GAMES SCHEMA OBJECTS ------
+var games = [
+    {
+    _id: 1,
+    name: 'Medieval Madness',
+    theme: 'medieval castle times',
+    opponents: [ 'trolls', 'the Castle'],
+    },
+    {
+    _id: 2,
+    name: 'Scared Stiff',
+    theme: 'Horror puns',
+    opponents: [ 'crate', 'coffin'],
+    },
+]
 
 
 
