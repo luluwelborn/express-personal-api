@@ -74,21 +74,32 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "My basic profile info"},
-      {method: "POST", path: "/api/games", description: "pinball games I like"}
+      // {method: "POST", path: "/api/games", description: "pinball games I like"}
     ]
   })
 });
 
-// ------ ENDPOINT PROFILE ------
+// ------ GET PROFILE ------
 app.get('/api/profile', function(req,res) {
   console.log('profile index exists');
   res.json(profile);
 });
 
-// ------ ENDPOINT GAMES ------
-// app.post('/api/games', function(){
-//   ???
-// });
+// ------ UPDATE GAME ------
+// app.put('/api/books/:id', controllers.game.update);
+
+// ------ DELETE GAME ------
+app.delete('/api/games/:id', function(req,res) {
+  // get book id from url params (`req.params`)
+  console.log('delete game', req.params);
+  var deleteGame = games.findIndex(function(element, index) {
+    return (element._id === parseInt(req.params.id)); //params are strings
+  });
+  console.log('deleting book with index', deleteGameIndex);
+  var gameToDelete = games[deleteGamesIndex];
+  games.splice(deleteGameIndex, 1);
+  res.json(gameToDelete);
+});
 
 
 /**********
