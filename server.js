@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 
 // var db = require('./models');
 // ------ MY /API/PROFILE DATA ------  
-
 var profile = {
     name: "Lauren Mikel Welborn",
     github_link: "https://github.com/luluwelborn",
@@ -25,9 +24,6 @@ var profile = {
       { name: 'Bronson', personality: 'artist' }
     ]
 };
-
-
-
 
 
 
@@ -68,9 +64,10 @@ app.get('/api', function api_index(req, res) {
 });
 
 // ------ ENDPOINT PROFILE ------
-// app.get('/api/profile', function index(req, res) {
-//  res.json({profile});
-// });
+app.get('/api/profile', function(req,res) {
+  console.log('profile index exists');
+  res.json(profile);
+});
 
 // ------ ENDPOINT GAMES ------
 // app.post('/api/games', function(){
