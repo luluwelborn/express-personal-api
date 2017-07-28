@@ -39,6 +39,12 @@ var games = [
     theme: 'Horror puns',
     opponents: [ 'crate', 'coffin'],
     },
+    {
+    _id: 3,
+    name: 'X-files',
+    theme: 'Alien conspiracy',
+    opponents: [ 'smoking man', 'hidden alien'],
+    }
 ]
 
 
@@ -74,7 +80,7 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "My basic profile info"},
-      // {method: "POST", path: "/api/games", description: "pinball games I like"}
+      {method: "POST", path: "/api/games", description: "pinball games I like"}
     ]
   })
 });
@@ -85,18 +91,25 @@ app.get('/api/profile', function(req,res) {
   res.json(profile);
 });
 
-// ------ UPDATE GAME ------
+// ------ GET GAMES ------
+app.get('/api/games', function(req,res) {
+  console.log('games index exists');
+  res.json(games);
+});
+
+// ------ UPDATE GAMES ------
 // app.put('/api/books/:id', controllers.game.update);
 
 // ------ DELETE GAME ------
 app.delete('/api/games/:id', function(req,res) {
   // get book id from url params (`req.params`)
   console.log('delete game', req.params);
-  var deleteGame = games.findIndex(function(element, index) {
-    return (element._id === parseInt(req.params.id)); //params are strings
+  var gameId = req.params.id;
+  var deleteGameIndex = games.findIndex(function(element, index) {
+    return (element._id === parseInt(req.params.id));
   });
   console.log('deleting book with index', deleteGameIndex);
-  var gameToDelete = games[deleteGamesIndex];
+  var gameToDelete = games[deleteGameIndex];
   games.splice(deleteGameIndex, 1);
   res.json(gameToDelete);
 });
