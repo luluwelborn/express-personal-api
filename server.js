@@ -73,9 +73,9 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // Documented api endpoints below
   res.json({
-    i_have_documented_all_my_endpoints: true,
+    // i_have_documented_all_my_endpoints: true,
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentation_url: "https://github.com/luluwelborn/express-personal-api/blob/master/README.md",
+    documentation_url: "https://github.com/luluwelborn/express-routing-lab",
     base_url: "https://serene-meadow-79019.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -97,8 +97,21 @@ app.get('/api/games', function(req,res) {
   res.json(games);
 });
 
+// ------ POST GAMES ------
+app.post('/api/games', function(req,res) {
+  console.log('games posting function', req.params);
+  games.push(req.body);
+  res.json(games);
+});
+
+
 // ------ UPDATE GAMES ------
-// app.put('/api/books/:id', controllers.game.update);
+app.put('/api/games/:id', function(req,res) {
+  console.log('updating', req.params);
+  games[req.params.id -1] = req.body;
+  res.send(req.body);
+});
+
 
 // ------ DELETE GAME ------
 app.delete('/api/games/:id', function(req,res) {
@@ -115,6 +128,10 @@ app.delete('/api/games/:id', function(req,res) {
 });
 
 
+// ------ CREATE GAME (crud option) ------
+
+
+
 /**********
  * SERVER *
  **********/
@@ -123,3 +140,9 @@ app.delete('/api/games/:id', function(req,res) {
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is up and running on http://localhost:3000/');
 });
+
+
+
+
+
+
