@@ -128,10 +128,6 @@ app.delete('/api/games/:id', function(req,res) {
 });
 
 
-// ------ CREATE GAME (crud option) ------
-
-
-
 /**********
  * SERVER *
  **********/
